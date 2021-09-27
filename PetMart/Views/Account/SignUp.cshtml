@@ -1,0 +1,74 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Pet Mart | Sign Up";
+}
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <img class="img-fluid" src="~/images/account (2).svg" />
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <h1 class="text-center mb-5">SignUp</h1>
+        <form method="post" asp-action="Register" autocomplete="off">
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <input asp-for="FirstName" type="text" id="form3Example1" class="form-control" required>
+                        <label asp-for="FirstName" class="form-label" for="form3Example1" style="margin-left: 0px;">First name</label>
+                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 76px;"></div><div class="form-notch-trailing"></div></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <input asp-for="LastName" type="text" id="form3Example2" class="form-control" required>
+                        <label asp-for="LastName" class="form-label" for="form3Example2" style="margin-left: 0px;">Last name</label>
+                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 75.2px;"></div><div class="form-notch-trailing"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input asp-for="Username" type="email" id="form3Example3" class="form-control" required>
+                <label asp-for="Username" class="form-label" for="form3Example3" style="margin-left: 0px;">Email address</label>
+                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 98.4px;"></div><div class="form-notch-trailing"></div></div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input asp-for="Password" type="password" id="form3Example4" class="form-control" required>
+                <label asp-for="Password" class="form-label" for="form3Example4" style="margin-left: 0px;">Password</label>
+                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 71.2px;"></div><div class="form-notch-trailing"></div></div>
+            </div>
+
+            <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" checked="">
+                <label class="form-check-label" for="form2Example3">
+                    Subscribe to our newsletter
+                </label>
+            </div>
+
+            <input type="submit" value="Sign Up" class="btn btn-primary" />
+
+            <div class="text-center">
+                <p>Already a member? <a asp-action="Index">Sign In</a></p>
+                <p>or sign up with:</p>
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                </button>
+
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                </button>
+
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-github"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

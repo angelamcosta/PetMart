@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Product>
+
+<div class="row mb-4">
+    <div class="col-3">
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+            <a asp-action="Index" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                <span class="fs-4">Categories</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a asp-action="GetCategory" asp-controller="Categories" asp-route-id="1" class="nav-link @(ViewBag.Category == "Dog" ? "active" : "link-dark")" aria-current="page">
+                        Dog
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="GetCategory" asp-controller="Categories" asp-route-id="2" class="nav-link @(ViewBag.Category == "Cat" ? "active" : "link-dark")">
+                        Cat
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="GetCategory" asp-controller="Categories" asp-route-id="3" class="nav-link @(ViewBag.Category == "Fish" ? "active" : "link-dark")">
+                        Fish
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="GetCategory" asp-controller="Categories" asp-route-id="4" class="nav-link @(ViewBag.Category == "Bird" ? "active" : "link-dark")">
+                        Bird
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="GetCategory" asp-controller="Categories" asp-route-id="5" class="nav-link @(ViewBag.Category == "Reptile" ? "active" : "link-dark")">
+                        Reptile
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="row row-cols-3">
+
+            @foreach (var item in Model)
+            {
+                <div class="col mt-2">
+                    <div class="card" style="width: 17rem;">
+                        <img src="@Url.Content("~/images/" + item.Url)" class="card-img-top p-3" alt="product logo">
+                        <div class="card-body">
+                            <p class="card-title fw-bold">@item.Name</p>
+                            @*<a asp-action="GetCategory" asp-route-id="@item.CategoryId" class="card-title">@item.Category.Name</a>*@
+                            <p class="card-text fw-bold text-danger">€ @item.Price.ToString("0.00")</p>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@item.Id" class="btn btn-success btn-lg px-4 me-md-2">Buy</a>
+                                }
+                                else
+                                {
+                                    <a asp-action="Index" asp-controller="Account" class="btn btn-success btn-lg px-4 me-md-2">Buy</a>
+                                }
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-lg px-4 me-md-2">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

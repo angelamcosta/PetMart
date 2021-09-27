@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Pet Mart | Products";
+}
+
+@section Layouts {
+    <link href="~/css/sidebars.css" rel="stylesheet" />
+}
+
+@await Html.PartialAsync("/Views/Shared/_ProductsPartialView.cshtml")
+
+@section Scripts { 
+    <script src="~/js/sidebars.js"></script>
+}

@@ -1,0 +1,72 @@
+﻿@model Client
+
+@{
+    ViewData["Title"] = "Pet Mart | Profile";
+}
+
+@section Layouts {
+<link href="~/css/profile.css.css" rel="stylesheet" />
+}
+
+<div class="row g-5 justify-content-md-center">
+    <div class="col-md-7 col-lg-8">
+        <h1 class="mb-4">My profile</h1>
+        <div class="main-body">
+            <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="~/images/user.svg" alt="user" class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                    <h4>@Model.FirstName @Model.LastName</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Full Name</h6>
+                                </div>
+                                <div class="col-sm-9">
+                                    @Model.FirstName @Model.LastName
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9">
+                                    @Model.UserName
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Phone</h6>
+                                </div>
+                                <div class="col-sm-9">
+                                    @Model.PhoneNumber
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Address</h6>
+                                </div>
+                                <div class="col-sm-9">
+                                    Bay Area, San Francisco, CA
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

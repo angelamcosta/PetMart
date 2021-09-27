@@ -1,0 +1,100 @@
+﻿@model CheckoutViewModel
+
+@{
+    ViewData["Title"] = "Pet Mart | Shopping Cart";
+}
+
+@if (Model.Items.Any())
+{
+    <h1>My shopping cart</h1>
+    <div class="shadow-lg container mb-5 p-4 rounded">
+        @foreach (var item in Model.Items)
+        {
+            <div class="row align-items-center">
+                <div class="col-lg-1 col-md-1 col-12">
+                    <a asp-action="Details" asp-controller="Categories" asp-route-id="@item.ProductId"><img src="@Url.Content("~/images/" + item.Product.Url)" width="82" height="75" alt="product image"></a>
+                </div>
+                <div class="col-lg-4 col-md-3 col-12">
+                    <h5>
+                        <a asp-action="Details" asp-controller="Categories" asp-route-id="@item.ProductId">
+                            @item.Product.Name
+                        </a>
+                    </h5>
+                    <p>
+                        <span><em>Category:</em> @item.Product.Category.Name</span>
+                    </p>
+                </div>
+                <div class="col-lg-2 col-md-2 col-12">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <a asp-action="UpdateItem" asp-controller="ShoppingCart" asp-route-id="@item.Id">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <p>@item.Quantity</p>
+                            </div>
+                            <div class="col">
+                                <a asp-action="UpdateItem" asp-controller="ShoppingCart" asp-route-id="@item.Id" asp-route-add="false">
+                                    <i class="fas fa-minus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-12">
+                    € @item.Product.Price.ToString("0.00")
+                </div>
+                <div class="col-lg-2 col-md-2 col-12">
+                    <!-- Transformar em prop no modelo -->
+                    € @((item.Product.Price * item.Quantity).ToString("0.00"))
+                </div>
+                <div class="col-lg-1 col-md-2 col-12">
+                    <a asp-action="RemoveFromCart" asp-controller="Categories" asp-route-id="@item.Id"><i class="fas fa-trash fa-lg"></i></a>
+                </div>
+            </div>
+        }
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6 col-12">
+                        <div class="left">
+                            <div class="coupon">
+                                <form action="#" target="_blank">
+                                    <input name="Coupon" placeholder="Enter Your Coupon">
+                                    <br />
+                                    <div class="btn-group mt-3">
+                                        <button class="btn">Apply Coupon</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <ul>
+                            <li>Cart Subtotal: <span>€@Model.CartTotal.ToString("0.00")</span></li>
+                            <li>Shipping: <span>Free</span></li>
+                            <li class="last">You Pay: <span>€@Model.CartTotal.ToString("0.00")</span></li>
+                        </ul>
+                        <div>
+                            <a asp-action="Checkout" asp-controller="ShoppingCart" class="btn">Checkout</a>
+                            <a asp-action="Index" asp-controller="Categories" class="btn btn-success">Continue shopping</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-12">
+        <div class="card shadow-lg" style="display:inline-block;">
+            <div class="card-body">
+                Your shopping cart is empty.
+            </div>
+        </div>
+    </div>
+}

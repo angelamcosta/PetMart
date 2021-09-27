@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Order>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+@section Layouts {
+<link href="~/css/orders.css" rel="stylesheet" />
+}
+
+<div class="container mb-5">
+    <article class="card">
+        <header class="card-header"> My Orders / Tracking </header>
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                @foreach (var order in Model)
+                {
+                    <h6>Order ID: @order.Id</h6>
+                    <article class="card">
+                        <div class="card-body row">
+                            <div class="col"> <strong>Estimated Delivery time:</strong> <br>29 nov 2019 </div>
+                            <div class="col"> <strong>Shipping BY:</strong> <br> BLUEDART, | <i class="fa fa-phone"></i> +1598675986 </div>
+                            <div class="col"> <strong>Status:</strong> <br> Picked by the courier </div>
+                            <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>
+                        </div>
+                    </article>
+                    <div class="track">
+                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked by courier</span> </div>
+                        <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+                        <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Ready for pickup</span> </div>
+                    </div>
+                    <hr>
+                    <ul class="row">
+                        @foreach (var item in order.Items)
+                        {
+                            <li class="col-md-4">
+                                <figure class="itemside mb-3">
+                                    <div class="aside"><img src="@Url.Content("~/images/" + item.Product.Url)" class="img-sm border"></div>
+                                    <figcaption class="info align-self-center">
+                                        <p class="title">@item.Product.Name <span class="text-muted">€@item.Product.Price.ToString("0.00") </span>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                        }
+                    </ul>
+                    <hr>
+                    <a asp-action="Confirmation" asp-controller="Orders" asp-route-id="@order.Id" class="btn btn-warning" data-abc="true">
+                        Check your invoice
+                    </a>
+                    <hr>
+                }
+            }
+            else
+            {
+                <div class="col-12">
+                    <div class="card shadow-md" style="display:inline-block;">
+                        <div class="card-body">
+                            You have no orders to list.
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </article>
+</div>

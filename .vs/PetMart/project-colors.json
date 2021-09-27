@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b0584b35-da70-44fa-9765-4c5e641f1230": {
+      "ProjectGuid": "b0584b35-da70-44fa-9765-4c5e641f1230",
+      "DisplayName": "PetMart",
+      "ColorIndex": 0
+    },
+    "7c659f19-16d2-4b0d-bbd7-abf774480391": {
+      "ProjectGuid": "7c659f19-16d2-4b0d-bbd7-abf774480391",
+      "DisplayName": "RepoLibrary",
+      "ColorIndex": 1
+    },
+    "04a6361c-18ff-4f5e-8d66-a6a0733437ec": {
+      "ProjectGuid": "04a6361c-18ff-4f5e-8d66-a6a0733437ec",
+      "DisplayName": "WebAPI",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

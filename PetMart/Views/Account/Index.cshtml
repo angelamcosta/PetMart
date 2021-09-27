@@ -1,0 +1,66 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Pet Mart | Login";
+}
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <h1 class="text-center mb-5">Login</h1>
+
+        <form method="post" asp-action="Login" autocomplete="off">
+            <div class="form-outline mb-4">
+                <input asp-for="Username" type="email" id="form2Example1" class="form-control" required>
+                <label asp-for="Username" class="form-label" for="form2Example1" style="margin-left: 0px;">Email address</label>
+                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 98.4px;"></div><div class="form-notch-trailing"></div></div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input asp-for="Password" type="password" id="form2Example2" class="form-control" required>
+                <label asp-for="Password" class="form-label" for="form2Example2" style="margin-left: 0px;">Password</label>
+                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 71.2px;"></div><div class="form-notch-trailing"></div></div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="form2Example3" checked="">
+                        <label class="form-check-label" for="form2Example3">
+                            Remember me
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <a href="#!">Forgot password?</a>
+                </div>
+            </div>
+
+            <input type="submit" value="Sign In" class="btn btn-primary" />
+
+            <div class="text-center">
+                <p>Not a member? <a asp-action="SignUp">Register</a></p>
+                <p>or sign up with:</p>
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                </button>
+
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                </button>
+
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-github"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <img class="img-fluid" src="~/images/account (1).svg" />
+    </div>
+</div>

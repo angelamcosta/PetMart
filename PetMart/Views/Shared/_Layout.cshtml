@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link rel="icon" href="~/images/022-Treats.svg" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+          rel="stylesheet" />
+    @RenderSection("Layouts", false)
+    <title>@ViewBag.Title</title>
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+    <nav class="py-2 bg-light border-bottom">
+        <div class="container d-flex flex-wrap">
+            <ul class="nav me-auto">
+                <li class="nav-item"><a href="/" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" asp-action="GetCategory" asp-controller="Categories" asp-route-id="1">Dog</a></li>
+                        <li><a class="dropdown-item" asp-action="GetCategory" asp-controller="Categories" asp-route-id="2">Cat</a></li>
+                        <li><a class="dropdown-item" asp-action="GetCategory" asp-controller="Categories" asp-route-id="3">Fish</a></li>
+                        <li><a class="dropdown-item" asp-action="GetCategory" asp-controller="Categories" asp-route-id="4">Bird</a></li>
+                        <li><a class="dropdown-item" asp-action="GetCategory" asp-controller="Categories" asp-route-id="5">Reptile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" asp-action="Index" asp-controller="Categories">All products</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a asp-action="FAQ" asp-controller="Home" class="nav-link link-dark px-2">FAQs</a></li>
+            </ul>
+            <ul class="nav">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item"><a asp-action="Index" asp-controller="Account" class="nav-link link-dark px-2">Login</a></li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a asp-action="Index" asp-controller="ShoppingCart" class="nav-link link-dark px-2">
+                            <lord-icon src="https://cdn.lordicon.com/slkvcfos.json"
+                                       trigger="hover"
+                                       stroke="100"
+                                       colors="primary:#121331,secondary:#08a88a"
+                                       style="width: 32px; height: 32px">
+                            </lord-icon>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Profile
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" asp-action="Profile" asp-controller="Account">My Account</a></li>
+                            <li><a class="dropdown-item" asp-action="Index" asp-controller="Orders">Orders</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" asp-action="Logout" asp-controller="Account">Sign Out</a></li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
+    <header class="py-3 mb-4 border-bottom">
+        <div class="container d-flex flex-wrap justify-content-center">
+            <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+                <img class="bi me-2" src="~/images/034-pet shop.svg" width="42" height="34" alt="logo" />
+                <span class="fs-4">PetMart</span>
+            </a>
+            <form asp-controller="Categories" asp-action="Search" class="col-12 col-lg-auto mb-3 mb-lg-0">
+                <input name="SearchString" type="search" class="form-control" placeholder="Search..." aria-label="Search">
+            </form>
+        </div>
+    </header>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <div style="flex-grow:1"></div>
+    <footer class="footer text-center text-white mt-auto" style="background-color: #f1f1f1;">
+        <div class="container pt-4">
+            <section class="mb-4">
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                   href="#!"
+                   role="button"
+                   data-mdb-ripple-color="dark">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                   href="#!"
+                   role="button"
+                   data-mdb-ripple-color="dark">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                   href="#!"
+                   role="button"
+                   data-mdb-ripple-color="dark">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                   href="#!"
+                   role="button"
+                   data-mdb-ripple-color="dark">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                   href="#!"
+                   role="button"
+                   data-mdb-ripple-color="dark">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                   href="#!"
+                   role="button"
+                   data-mdb-ripple-color="dark">
+                    <i class="fab fa-github"></i>
+                </a>
+            </section>
+        </div>
+        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2021 Copyright:
+            <a class="text-dark" href="/">PetMart.com</a>
+        </div>
+    </footer>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+    @await RenderSectionAsync("Scripts", false)
+</body>
+</html>
