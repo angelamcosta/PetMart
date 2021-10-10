@@ -1,7 +1,7 @@
 # PetMart
 ## About The Project
 
-PetMart is a project that contains a web application, a web API, a class library and a repository library.
+PetMart is a ecommerce project that contains a web application, a web API that access the products and users from a SqlServer database, a class library that contains the models used in the database context and a repository library to access the API.
 
 ### Built With
 
